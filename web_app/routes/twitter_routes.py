@@ -3,7 +3,7 @@
 from flask import Blueprint, render_template, jsonify
 from web_app.models import db, User, Tweet, parse_records
 from web_app.services.twitter_service import api as twitter_api_client
-from web_app.services.basilica_service import connection as basilica_api_client
+from web_app.services.basilica_service import basilica_api_client
 
 twitter_routes = Blueprint("twitter_routes", __name__)
 
@@ -30,7 +30,7 @@ def get_user(screen_name=None):
     # breakpoint()
 
     all_tweet_texts = [status.full_text for status in statuses]
-    embeddings = list(basilica_api_client.embed_sentences(
+    embeddings = list(basilica_api_client().embed_sentences(
         all_tweet_texts, model="twitter"))
     print("NUMBER OF EMBEDDINGS", len(embeddings))
 
