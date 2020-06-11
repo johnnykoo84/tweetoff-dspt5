@@ -12,6 +12,8 @@ basilica = "*"
 scikit-learn = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
 
 [requires]
 python_version = "3.7"
