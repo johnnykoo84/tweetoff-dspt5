@@ -1,17 +1,20 @@
 # web_app/__init__.py
+import os
 
-from flask import Flask
-
-from web_app.models import db, migrate
-from web_app.routes.home_routes import home_routes
-from web_app.routes.book_routes import book_routes
-from web_app.routes.twitter_routes import twitter_routes
 from web_app.routes.stats_routes import stats_routes
+from web_app.routes.twitter_routes import twitter_routes
+from web_app.routes.book_routes import book_routes
+from web_app.routes.home_routes import home_routes
+from web_app.models import db, migrate
+from flask import Flask
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # DATABASE_URI = "sqlite:///web_app_99.db"  # using relative filepath
 # DATABASE_URI = "sqlite:////Users/Username/Desktop/your-repo-name/web_app_99.db" # using absolute filepath on Mac (recommended)
 # DATABASE_URI = "sqlite:///C:\\Users\\Username\\Desktop\\your-repo-name\\web_app_99.db" # using absolute filepath on Windows (recommended) h/t: https://stackoverflow.com/a/19262231/670433
-DATABASE_URI = 'sqlite:///twitoff_development_pt5.db'  # using relative filepath
+DATABASE_URI = os.getenv("DATABASE_URL")  # using relative filepath
 
 
 def create_app():
