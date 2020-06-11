@@ -11,19 +11,29 @@
 <form action="/predict" method="POST">
   <!-- TODO: Instead of hard-coding these drop-down menu options, dynamically populate them based on user records from the database -->
   <label>Twitter User A:</label>
-  <select name="screen_name_a">
+  <!-- <select name="screen_name_a">
     <option value="elonmusk" selected="true">@elonmusk</option>
     <option value="justinbieber">@justinbieber</option>
     <option value="s2t2">@s2t2</option>
+  </select> -->
+  <select name="screen_name_a">
+    {% for user in users %}<option value="{{user.screen_name}}"
+      >@{{user.screen_name}}</option
+    >{% endfor %}
   </select>
   <br />
 
   <!-- TODO: Instead of hard-coding these drop-down menu options, dynamically populate them based on user records from the database -->
   <label>Twitter User B:</label>
-  <select name="screen_name_b">
+  <!-- <select name="screen_name_b">
     <option value="elonmusk">@elonmusk</option>
     <option value="justinbieber" selected="true">@justinbieber</option>
     <option value="s2t2">@s2t2</option>
+  </select> -->
+  <select name="screen_name_b">
+    {% for user in users %}<option value="{{user.screen_name}}"
+      >@{{user.screen_name}}</option
+    >{% endfor %}
   </select>
   <br />
 

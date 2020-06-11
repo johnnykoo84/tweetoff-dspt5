@@ -1,0 +1,18 @@
+<!-- web_app/templates/new_book.html -->
+
+{% extends "layout.html" %} {% block content %}
+
+<h1>Add New User</h1>
+
+<p>
+  Please fill out the form and submit to create a new Tweet User for prediction
+  Model!
+</p>
+
+<form action="/users/create" method="POST">
+  <label>Username:</label>
+  <input type="text" name="screen_name" placeholder="koo" value="elonmusk" />
+
+  <button>Submit</button>
+</form>
+{% endblock %}

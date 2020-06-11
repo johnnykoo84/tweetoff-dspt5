@@ -1,5 +1,5 @@
 # web_app/routes/home_routes.py
-
+from web_app.models import db, User, Tweet, parse_records
 from flask import Blueprint, render_template
 
 home_routes = Blueprint("home_routes", __name__)
@@ -7,7 +7,14 @@ home_routes = Blueprint("home_routes", __name__)
 
 @home_routes.route("/")
 def index():
-    return render_template("prediction_form.html")
+    db_users = User.query.all()
+    print(db_users)
+
+    users = parse_records(db_users)
+    print("@@@@@@")
+    print(users)
+
+    return render_template("prediction_form.html", users=users)
 
 
 @home_routes.route("/hello")
